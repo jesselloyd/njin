@@ -1,6 +1,6 @@
 [package]
-name = "simple"
+name = "njin"
 version = "0.1.0"
-authors = ["Jesse Lloyd <jesse@8thdaysoftware.com>"]
+authors = ["Jesse Lloyd <jesse.lloyd@students.fhu.edu>"]
 
 [dependencies]
