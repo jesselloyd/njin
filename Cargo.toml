@@ -1,0 +1,6 @@
+[package]
+name = "simple"
+version = "0.1.0"
+authors = ["Jesse Lloyd <jesse@8thdaysoftware.com>"]
+
+[dependencies]
