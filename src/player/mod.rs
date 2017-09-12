@@ -1,4 +1,4 @@
-use common::{GameObject, Position, Direction, Moveable, Interactive};
+use common::{GameObject, Position, Direction, Moves, Interacts};
 
 #[derive(Clone)]
 pub struct Player {
@@ -26,6 +26,10 @@ impl Player {
 }
 
 impl GameObject for Player {
+    fn name(&self) -> String {
+        self.name.to_string()
+    }
+
     fn position(&self) -> Position {
         self.position
     }
@@ -40,7 +44,7 @@ impl GameObject for Player {
     }
 }
 
-impl Moveable for Player {
+impl Moves for Player {
     fn movement(&mut self, direction: Direction) {
         match direction {
             Direction::Up => self.position.y += self.speed,
@@ -51,7 +55,7 @@ impl Moveable for Player {
     }
 }
 
-impl Interactive for Player {
+impl Interacts for Player {
     fn attack<T: GameObject>(&self, target: &mut T) {
         if self.in_range_of(target) && target.is_destroyable() && target.can_be_attacked() {}
     }
@@ -81,5 +85,25 @@ impl Interactive for Player {
         let t_p = target.position();
         self.is_facing(target) && (p.x - t_p.x).abs() <= self.range &&
             (p.y - t_p.y).abs() <= self.range
+    }
+
+    fn say(&self, phrase: &str) {
+        println!("{} says: \"{}\"", self.name, phrase);
+    }
+
+    fn focus_on<T: GameObject>(&self, target: &mut T) {
+        println!("{} is now focused on {}.", self.name, target.name());
+    }
+
+    fn on_death(&mut self) {
+        println!("{} died.", self.name);
+    }
+
+    fn pick_up<T: GameObject>(&mut self, object: T) {
+        println!("Picking up object {}", object.name());
+    }
+
+    fn discard<T: GameObject>(&mut self, object: T) -> T {
+        object
     }
 }
