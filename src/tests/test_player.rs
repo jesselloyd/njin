@@ -1,5 +1,5 @@
 use super::super::player::Player;
-use common::*;
+use super::super::common::game_object::*;
 
 #[test]
 fn is_facing() {

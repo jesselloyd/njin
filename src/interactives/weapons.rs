@@ -1,4 +1,4 @@
-use common::{GameObject, Position};
+use common::game_object::{GameObject, Position};
 
 pub enum WeaponType {
     Sword,
@@ -25,15 +25,15 @@ impl GameObject for Weapon {
     fn name(&self) -> String {
         self.name.to_string()
     }
+
     fn position(&self) -> Position {
         self.position
     }
-    fn draw(&self) -> bool {
-        true
-    }
+
     fn is_destroyable(&self) -> bool {
         true
     }
+
     fn can_be_attacked(&self) -> bool {
         true
     }

@@ -1,4 +1,4 @@
-use common::{GameObject, Position, Direction, Moves, Interacts};
+use common::game_object::{GameObject, Position, Direction, Moves, Interacts};
 
 #[derive(Clone)]
 pub struct Player {
@@ -32,11 +32,6 @@ impl GameObject for Player {
 
     fn position(&self) -> Position {
         self.position
-    }
-
-    fn draw(&self) -> bool {
-        println!("Drawing player.");
-        true
     }
 
     fn is_destroyable(&self) -> bool {
